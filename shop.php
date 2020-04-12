@@ -113,13 +113,13 @@
 												<?php
 														if (!empty($row['KMSP'])) {
 															$price = $row['GIASP'] - ($row['GIASP'] * $row['KMSP']) / 100; ?>
-													<span class="mr-2 price-dc"><?php echo $row['GIASP']; ?> Đ</span>
+													<span class="mr-2 price-dc"><?php echo number_format($row['GIASP'],0,".","."); ?> Đ</span>
 												<?php
 														} else {
 															$price = $row['GIASP'];
 														}
 														?>
-												<span class="price-sale"><?php echo $price; ?> Đ</span>
+												<span class="price-sale"><?php echo number_format($price,0,".","."); ?> Đ</span>
 											</p>
 										</div>
 									</div>
