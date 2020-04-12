@@ -48,7 +48,7 @@ if ($result != null) {
                     </div>
                     <script type="text/javascript">
                         var mount;
-                        $("a#addcart-<?php echo $row['MASP']; ?>").click(function(e) {
+                        $("#addcart-<?php echo $row['MASP']; ?>").click(function(e) {
                             e.preventDefault();
                             var item = {
                                 'id': $(".product-id-<?php echo $row['MASP'] ?>").attr('id'),
