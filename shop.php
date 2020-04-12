@@ -175,7 +175,7 @@
 								<li><a href="shop.php?page=<?php echo ($current_page - 1); ?>">&lt;</a></li>
 								<?php
 								}
-								for ($i = 1; $i < $total_page; $i++) {
+								for ($i = 1; $i <= $total_page; $i++) {
 									if ($i == $current_page) { ?>
 									<li class="active"><span><?php echo $i; ?></span></li>
 								<?php } else { ?>
