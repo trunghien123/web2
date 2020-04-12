@@ -142,7 +142,7 @@ $ok_user = 0;
 												<td><?php echo $row['NAME']; ?></td>
 												<td><?php echo $row['ADDRESS']; ?></td>
 												<td><?php echo $row['PHONE']; ?></td>
-												<td><?php echo $row['TONGTIEN']; ?></td>
+												<td><?php echo number_format($row['TONGTIEN'],0,".",".")." Đ"; ?></td>
 												<td><?php echo $row['NGAYDH']; ?></td>
 												<td class="noExp"><button class="btn btn-outline-primary m-1 ct">Chi tiết</button></td>
 												<td><?php echo $row['USERNAME']; ?></td>
@@ -192,7 +192,7 @@ $ok_user = 0;
 					</div>
 					<p><a href="checkout.php" class="btn btn-primary py-3 px-4">Estimate</a></p>
 				</div> -->
-					=
+					
 				</div>
 			</div>
 		<?php } else { ?>
