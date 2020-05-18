@@ -57,9 +57,14 @@ if (isset($_SESSION['username'])) {
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mua sắm</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
                         <a class="dropdown-item" href="shop.php">Mua sắm</a>
-                        
-                        <a class="dropdown-item" href="cart.php">Giỏ hàng</a>
-                        <a class="dropdown-item" id="subitem-checkout" href="checkout.php">Thanh toán</a>
+                        <?php 
+                        if(isset($_SESSION['username'])){
+                        ?>
+                            <a class="dropdown-item" href="cart.php">Giỏ hàng</a>
+                            <a class="dropdown-item" id="subitem-checkout" href="checkout.php">Thanh toán</a>
+                        <?php 
+                        } 
+                        ?>
                     </div>
                 </li>
                 <li class="nav-item nav-item-about"><a href="about.php" class="nav-link">Thông tin</a></li>
