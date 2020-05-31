@@ -1,10 +1,11 @@
 <div class="row">
     <?php
-    include 'core/DataProvider.php';
+    // include 'core/DataProvider.php';
     //khai báo các biến để tìm kiếm
     // echo $_POST['category'];
-    $category = isset($_POST['category']) ? $_POST['category'] : null;
-    // echo $category;
+    $category = isset($_REQUEST['category']) ? $_REQUEST['category'] : null;
+    $giamin = isset($_REQUEST['minp']) ? $_REQUEST['minp'] : null;
+    echo $giamin;
     $condition = "";
     if (!is_null($category))
         $condition .= " AND MACL = $category";
@@ -36,7 +37,7 @@
     $result = DataProvider::executeQuery($sql);
     if ($result != null) {
         while ($row = mysqli_fetch_array($result)) { ?>
-            <div class="col-md-6 col-lg-3">
+            <div class="col-md-6 col-lg-3 ">
                 <div class="product">
                     <a href="product-single.php?id=<?php echo $row['MASP']; ?>" class="img-prod"><img class="img-fluid" src="images/products/<?php echo $row['HINHANHSP']; ?>" alt="Colorlib Template">
                         <?php if (!empty($row['KMSP'])) { ?><span class="status"><?php echo $row['KMSP']; ?> %</span> <?php } ?>
@@ -65,7 +66,7 @@
                                 <a href="product-single.php?id=<?php echo $row['MASP']; ?>" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                     <span><i class="ion-ios-menu"></i></span>
                                 </a>
-                                <a href="" class="buy-now d-flex justify-content-center align-items-center mx-1" id="addcart-<?php echo $row['MASP']; ?>">
+                                <a href="javascript:void(0)" class="buy-now d-flex justify-content-center align-items-center mx-1" id="addcart-<?php echo $row['MASP']; ?>">
                                     <span><i class="ion-ios-cart"></i></span>
                                 </a>
                                 <!-- <a href="#" class="heart d-flex justify-content-center align-items-center ">
@@ -76,24 +77,29 @@
                         <script type="text/javascript">
                             var mount;
                             $("a#addcart-<?php echo $row['MASP']; ?>").click(function(e) {
-                                e.preventDefault();
-                                var item = {
-                                    'id': $(".product-id-<?php echo $row['MASP'] ?>").attr('id'),
-                                    'quantity': 1
-                                };
-                                $.ajax({
-                                    type: "POST",
-                                    url: "addcart.php",
-                                    data: item,
-                                    cache: false,
-                                    success: function(results) {
-                                        //console.log(data);
-                                        mount = $('#header-amount-cart').html();
-                                        $('#header-amount-cart').html(Number(mount) + 1);
-                                        console.log(results);
-                                        //window.location.reload();
-                                    }
-                                });
+                                <?php if(isset($_SESSION['username'])){ ?>
+                                    e.preventDefault();
+                                    var item = {
+                                        'id': $(".product-id-<?php echo $row['MASP'] ?>").attr('id'),
+                                        'quantity': 1
+                                    };
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "addcart.php",
+                                        data: item,
+                                        cache: false,
+                                        success: function(results) {
+                                            //console.log(data);
+                                            mount = $('#header-amount-cart').html();
+                                            $('#header-amount-cart').html(Number(mount) + 1);
+                                            console.log(results);
+                                            //window.location.reload();
+                                        }
+                                    });
+                                <?php
+                                }else{ ?>
+                                   alert("Bạn phải đăng nhập mới được mua hàng.") ;
+                                <?php } ?>
                             });
                         </script>
                     </div>

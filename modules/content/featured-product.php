@@ -38,7 +38,7 @@ if ($result != null) {
                             <a href="product-single.php?id=<?php echo $row['MASP']; ?>" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                 <span><i class="ion-ios-menu"></i></span>
                             </a>
-                            <a href="" class="buy-now d-flex justify-content-center align-items-center mx-1" id="addcart-<?php echo $row['MASP']; ?>">
+                            <a href="javascript:void(0)" class="buy-now d-flex justify-content-center align-items-center mx-1" id="addcart-<?php echo $row['MASP']; ?>">
                                 <span><i class="ion-ios-cart"></i></span>
                             </a>
                             <!-- <a href="#" class="heart d-flex justify-content-center align-items-center ">
@@ -49,6 +49,9 @@ if ($result != null) {
                     <script type="text/javascript">
                         var mount;
                         $("a#addcart-<?php echo $row['MASP']; ?>").click(function(e) {
+                            <?php 
+                                if(isset($_SESSION['username'])){
+                            ?>
                             e.preventDefault();
                             var item = {
                                 'id': $(".product-id-<?php echo $row['MASP'] ?>").attr('id'),
@@ -67,6 +70,9 @@ if ($result != null) {
                                     //window.location.reload();
                                 }
                             });
+                        <?php }else{?>
+                            alert("Bạn phải đăng nhập mới được mua hàng.");
+                        <?php } ?>
                         });
                     </script>
                 </div>

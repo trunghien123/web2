@@ -28,7 +28,7 @@
 	<link rel="stylesheet" href="css/flaticon.css">
 	<link rel="stylesheet" href="css/icomoon.css">
 	<link rel="stylesheet" href="css/style.css">
-
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
 
 </head>
@@ -37,38 +37,10 @@
 	<?php
 	include('modules/header.php');
 	include('modules/content/title.php'); //tieu de & hinh nen tieu de
-	$sql = "SELECT * FROM loaisanpham ORDER BY MACL";
-	$result = DataProvider::executeQuery($sql);
 	?>
-	<section class="ftco-section">
 
+	<section class="ftco-section">
 		<div class="container">
-			<div style="padding: 20px">
-				<table>
-					<tr>
-						<td>Phân loại : </td>
-						<td>
-							<select id="categories" style="padding: 5px; width: 200px" >
-								<option value="" selected>Tìm theo danh mục</option>
-								<?php
-								while ($row = mysqli_fetch_assoc($result)) { ?>
-									<option value="<?php echo $row['MACL']; ?>"><?php echo $row['TENCL']; ?></option>
-								<?php
-								}
-								?>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>Giá từ : </td>
-						<td><input type="text" name="" id="" style="border-radius: 5px"></td>
-					</tr>
-					<tr>
-						<td>Giá đến : </td>
-						<td><input type="text" name="" id="" style="border-radius: 5px"></td>
-					</tr>
-				</table>
-			</div>
 			<div class="row justify-content-center">
 				<div class="col-md-10 mb-5 text-center">
 					<ul class="product-category">
@@ -79,7 +51,7 @@
 						while ($row = mysqli_fetch_assoc($result)) {
 							$category = $row['TENCL'];
 							$categoryId = $row['MACL'];
-						?>
+							?>
 							<li><a id="<?php echo $categoryId; ?>" href="shop.php?category=<?php echo $categoryId; ?>"><?php echo $category; ?></a></li>
 
 						<?php
@@ -88,11 +60,9 @@
 					</ul>
 				</div>
 			</div>
-			<div id="data">
-			
-			</div>
-			
-			
+
+
+			<?php include("data.php") ?>
 		</div>
 	</section>
 
@@ -115,8 +85,8 @@
 	<script src="js/scrollax.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 	<script src="js/google-map.js"></script>
-	<script src="js/main.js"></script>
 	<script src="js/ajax.js"></script>
+	<script src="js/main.js"></script>
 	<script type="text/javascript" charset="utf-8">
 		var categorySelect = "<?php echo $category; ?>" != "" ? "<?php echo $category; ?>" : "all";
 		$(document).ready(function() {

@@ -61,7 +61,7 @@ if (isset($_SESSION['username'])) {
                         if(isset($_SESSION['username'])){
                         ?>
                             <a class="dropdown-item" href="cart.php">Giỏ hàng</a>
-                            <a class="dropdown-item" id="subitem-checkout" href="checkout.php">Thanh toán</a>
+                            <!-- <a class="dropdown-item" id="subitem-checkout" href="checkout.php">Thanh toán</a> -->
                         <?php 
                         } 
                         ?>

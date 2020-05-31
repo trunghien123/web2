@@ -38,10 +38,10 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Tạo tài khoản!</h1>
                             </div>
-                            <form class="user" name="form_register" id="user-regis" role="form" method="post"  >
+                            <form class="user" name="form_register" action="handle-user.php" role="form" method="post" onsubmit="return dangki()"  >
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" name="txtFullname" placeholder="Họ và tên" >
+                                    <input type="text" class="form-control form-control-user" name="txtFullname" placeholder="Họ và tên"  >
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" name="txtEmail" placeholder="Email" >
@@ -54,12 +54,13 @@
                                         <input type="text" class="form-control form-control-user" name="txtPhone" placeholder="Sdt">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" name="txtCmnd" placeholder="CMND">
+                                        <input type="text" class="form-control form-control-user" name="txtCmnd" placeholder="CMND" >
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" name="txtUsername" placeholder="Tên đăng nhập " >
+                                    <input type="text" class="form-control form-control-user" name="txtUsername" id="username" placeholder="Tên đăng nhập " >
+                                    <div id="message" style="padding: 5px 0 0 18px; color: red; font-weight: bold;"></div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -69,7 +70,7 @@
                                         <input type="password" data-minlength="6" data-match="#inputPassword" data-match-error="Wh" name="txtRePassword" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Nhập lại mật khẩu" >
                                     </div>
                                 </div>
-                                <input type="button" id="submit-regis" class="btn btn-primary btn-user btn-block" value="Đăng ký" onclick="dangki()" />
+                                <button type="submit" id="submit-regis" class="btn btn-primary btn-user btn-block" value="Đăng ký"  />Đăng ký</button>
 
                                 <!-- <hr>
                                 <a href="index.html" class="btn btn-google btn-user btn-block">
@@ -81,7 +82,7 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="forgot-password.html">Quên mật khẩu?</a>
+                                <a class="small" href="#">Quên mật khẩu?</a>
                             </div>
                             <div class="text-center">
                                 <a class="small" href="login.php">Đã có tài khoản? Đăng nhập ngay!</a>
@@ -101,45 +102,11 @@
     <!-- Core plugin JavaScript-->
     <script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="js/register.js"></script>
+    <script src="js/ajax.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="admin/js/sb-admin-2.min.js"></script>
     <script src="admin/js/validator.js"></script>
-    <script>
-        
-        var ok = 0, isRegister = false;
-        $('#submit-regis').on('click', function(e) {
-            
-                var x = $('#user-regis').serializeArray();
-                x.push({
-                    'name': 'user-action',
-                    'value': 'regis',
-                });
-                $.ajax({
-                    type: "POST",
-                    url: "handle-user.php",
-                    data: x,
-                    success: function(result) {
-                        if (result == '1') {
-                            ok = 1;
-                            $('#alertModal .modal-body p').html("Đăng kí thành công, Ok để đăng nhập");
-                            $('#alertModal').modal('show');
-                        }
-                        else {
-                            $('#alertModal .modal-body p').html("Tài khoản bị trùng");
-                            $('#alertModal').modal('show');
-                        }
-
-                    }
-                });
-            
-        });
-        $('#alertModal').on('hidden.bs.modal', function(e) {
-            if(ok==1) {
-            location.href = 'login.php';
-            }
-		})
-    </script>
 </body>
 
 </html>

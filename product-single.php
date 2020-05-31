@@ -140,7 +140,7 @@
 							<p id="textsl" style="color: #000;"><?php echo $textsl; ?></p>
 						</div>
 					</div>
-					<p><a href="" class="btn btn-black py-3 px-5" id="add-cart">Thêm vào giỏ hàng</a></p>
+					<p><a href="javascript:void(0)" class="btn btn-black py-3 px-5" id="add-cart">Thêm vào giỏ hàng</a></p>
 				</div>
 			</div>
 		</div>
@@ -198,7 +198,7 @@
 			var soluongsp = <?php echo $soluongsp; ?>;
 			var quantitiy = 0;
 			$('.quantity-right-plus').click(function(e) {
-
+				
 				// Stop acting like a button
 				e.preventDefault();
 				// Get the field name
@@ -228,6 +228,9 @@
 			});
 
 			$('a#add-cart').click(function(e) {
+				<?php 
+					if(isset($_SESSION['username'])){
+				?>
 				e.preventDefault();
 				//xử lí alert ko đủ hàng
 				var mount;
@@ -264,6 +267,11 @@
 						}
 					})
 				}
+			<?php }else{
+				?>
+					alert("Bạn phải đăng nhập mới được mua hàng.");
+				<?php
+			} ?>
 			});
 
 		});

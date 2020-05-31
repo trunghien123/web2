@@ -130,7 +130,7 @@ $ok_user = 0;
 												</div>
 											</td>
 
-											<td class="total"><?php echo ($price * $_SESSION['cart'][$row['MASP']]); ?></td>
+											<td class="total"><?php echo $price; ?></td>
 
 											<!-- xóa giỏ sản phẩm bằng ajax cho nó chuyên nghiệp :D -->
 											<script type="text/javascript">

@@ -118,7 +118,7 @@ $ok_user = 0;
 										<th>Tổng tiền</th>
 										<th>Thời gian đặt</th>
 										<th class="noExp">Chi tiết</th>
-										<th>Nhân viên</th>
+										<!-- <th>Nhân viên</th> -->
 										<th>Trạng thái</th>
 									</tr>
 								</thead>
@@ -145,7 +145,7 @@ $ok_user = 0;
 												<td><?php echo number_format($row['TONGTIEN'],0,".",".")." Đ"; ?></td>
 												<td><?php echo $row['NGAYDH']; ?></td>
 												<td class="noExp"><button class="btn btn-outline-primary m-1 ct">Chi tiết</button></td>
-												<td><?php echo $row['USERNAME']; ?></td>
+												<!-- <td><?php echo $row['USERNAME']; ?></td> -->
 												<td id="<?php echo $row['STATUS']; ?>"><?php echo $trangthai; ?></td>
 											</tr>
 
