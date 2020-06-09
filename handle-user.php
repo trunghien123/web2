@@ -9,7 +9,7 @@ if (isset($_POST['user-action'])) {
         if (isset($_POST['txtUsername']) && isset($_POST['txtPassword'])) {
             //die('');
             $username   = addslashes($_POST['txtUsername']);
-            $password   = addslashes($_POST['txtPassword']);
+            $password   = md5($_POST['txtPassword']);
             $sql = "SELECT * FROM taikhoan WHERE USERNAME='$username' AND PASSWORD='$password' LIMIT 1";
             $result = DataProvider::executeQuery($sql);
             $row = mysqli_fetch_assoc($result);
@@ -88,28 +88,42 @@ if (isset($_POST['order-action'])) {
         echo $run;
     }
 }
-// if (isset($_POST)) {
-//     $name = $_POST['txtFullname'];
-//     $email = $_POST['txtEmail'];
-//     $address = $_POST['txtAddress'];
-//     $username = $_POST['txtUsername'];
-//     $phone = $_POST['txtPhone'];
-//     $identity = $_POST['txtCmnd'];
-//     $password = password_hash($_POST['txtPassword'], PASSWORD_DEFAULT);
-//     $password2 = password_hash($_POST['txtRePassword'], PASSWORD_DEFAULT);
+if (isset($_POST['txtFullname'])) {
+    $name = $_POST['txtFullname'];
+    $email = $_POST['txtEmail'];
+    $address = $_POST['txtAddress'];
+    $username = $_POST['txtUsername'];
+    $phone = $_POST['txtPhone'];
+    $identity = $_POST['txtCmnd'];
+    $password = md5($_POST['txtPassword']);
+    $password2 = md5($_POST['txtRePassword']);
 
-//     $sql = "insert into taikhoan(USERNAME,PASSWORD,NAME,CMND,ADDRESS,PHONE,EMAIL,LEVEL,DUYET) 
-//             values ('$username','$password','$name','$identity','$address','$phone','$email','0','0')";
-//     // $check = "select USERNAME from TAIKHOAN where USERNAME = '$username'";
-//     // $run_check = DataProvider::executeQuery($check);
-//     // if (mysqli_num_rows($run_check) == 0) {
-//     $kq = DataProvider::executeQuery($sql);
-//     //     echo '1';
-//     // } else
-//     //     echo '0';
+    $sql = "insert into taikhoan(USERNAME,PASSWORD,NAME,CMND,ADDRESS,PHONE,EMAIL,LEVEL,DUYET) 
+            values ('$username','$password','$name','$identity','$address','$phone','$email','0','1')";
+    // $check = "select USERNAME from TAIKHOAN where USERNAME = '$username'";
+    // $run_check = DataProvider::executeQuery($check);
+    // if (mysqli_num_rows($run_check) == 0) {
+    $kq = DataProvider::executeQuery($sql);
+    //     echo '1';
+    // } else
+    //     echo '0';
     
-//     if($kq){
-//         
+    if($kq){
+        ?>
+        <script>
+            alert("Đăng kí thành công");
+            window.location.assign("login.php");
+        </script>
+        <?php
+    }else{
+        ?>
+        <script>
+            alert("Đăng kí thất bại");
+            window.location.assign("register.php");
+        </script>
+        <?php
+    }
+}
 // echo $_POST['user'];
 if(isset($_POST['user'])){
     $username = $_POST['user'];

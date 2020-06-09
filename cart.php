@@ -295,6 +295,9 @@ $ok_user = 0;
 							var masp= $(this).attr('masp');
 							var price = $(this).find('.price').html();
 							var quantity = $(this).find('.quantityi').val();
+							// if(quantity < 1){
+							// 	quantity = 1;
+							// }
 							
 							$.ajax({
 								type: "POST",

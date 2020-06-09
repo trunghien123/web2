@@ -28,6 +28,8 @@
 	<link rel="stylesheet" href="css/flaticon.css">
 	<link rel="stylesheet" href="css/icomoon.css">
 	<link rel="stylesheet" href="css/style.css">
+	<!-- css search -->
+	<link rel="stylesheet" href="css/search.css">
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
 
@@ -59,10 +61,19 @@
 						?>
 					</ul>
 				</div>
+				<div class="col-md-10 mb-5">
+					<div class="search" ><input type="search" placeholder="Search" class="search_sp" id="search"></div>
+					<div class="p-2 ">Khoảng giá : </div>
+					<div class=" d-flex flex-row">
+						<div class="p-2 "><input type="number" class="search_sp" id="minPrice"></div>
+						<div class="p-2 "><input type="number" class="search_sp" id="maxPrice"></div>
+					</div>
+				</div>
 			</div>
 
-
-			<?php include("data.php") ?>
+			<div id="data" style="text-align: center;">
+				<?php include("getData.php") ?>
+			</div>
 		</div>
 	</section>
 
@@ -87,6 +98,9 @@
 	<script src="js/google-map.js"></script>
 	<script src="js/ajax.js"></script>
 	<script src="js/main.js"></script>
+
+	<script src="js/search.js"></script>
+
 	<script type="text/javascript" charset="utf-8">
 		var categorySelect = "<?php echo $category; ?>" != "" ? "<?php echo $category; ?>" : "all";
 		$(document).ready(function() {

@@ -222,7 +222,7 @@
 				// If is not undefined
 
 				// Increment
-				if (quantity > 0) {
+				if (quantity > 1) {
 					$('#quantity').val(quantity - 1);
 				}
 			});
@@ -244,9 +244,13 @@
 					alert("Không đủ hàng !");
 					return;
 				} else {
+					var quantity = $('#quantity').val() ; 
+					if( quantity < 1 ){
+						quantity = 1;
+					}
 					item = {
 						'id': '<?php echo $idSP; ?>',
-						'quantity': $('#quantity').val()
+						'quantity': quantity
 					}
 					$.ajax({
 						type: "POST",

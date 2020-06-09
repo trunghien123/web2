@@ -5,6 +5,7 @@ $("#giatu").keyup(function() {
         // alert(giatu);
     })
 })
+
 //check user
 $("#username").keyup(function(){
     var username = $(this).val();
