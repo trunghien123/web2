@@ -26,3 +26,4 @@
 
 - Trong đơn hàng có thông tin khách hàng và thông tin người bán hàng. Có thể Lưu trữ và tìm kiếm thông tin khách hàng -
 - Đọc lại file word check lại từng chức năng.
+# doan-web
