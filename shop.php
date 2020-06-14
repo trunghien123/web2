@@ -70,7 +70,6 @@
 					</div>
 				</div>
 			</div>
-
 			<div id="data" style="text-align: center;">
 				<?php include("getData.php") ?>
 			</div>

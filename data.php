@@ -3,7 +3,6 @@
 <?php
 include 'core/DataProvider.php';
 //khai báo các biến để tìm kiếm
-// echo $_REQUEST['category'];
 $category = isset($_REQUEST['category']) ? $_REQUEST['category'] : null;
 $products = isset($_REQUEST['products']) ? $_REQUEST['products'] : null;
 $minPrice = !empty($_REQUEST['minPrice']) ? $_REQUEST['minPrice'] : 0;
@@ -37,7 +36,7 @@ $start = ($current_page - 1) * $limit;
 
 //lấy dánh sách sản phẩm
 $sql = "SELECT * FROM sanpham WHERE TENSP LIKE  '%".$products."%' AND  ". $minPrice ." <= GIASP AND ". $maxPrice ." >= GIASP "   . $condition . " LIMIT $start, $limit";
-
+// echo $sql;
 $result = DataProvider::executeQuery($sql);
 if(!$result){
     echo "<h4 style='margin-left: 120px'>KHÔNG TÌM THẤY SẢN PHẨM !!!</h4>";
@@ -129,7 +128,7 @@ if ($result != null) {
                 if ($i == $current_page) { ?>
                     <li class="active"><span><?php echo $i; ?></span></li>
                 <?php } else { ?>
-                    <li><a id="<?= $i ?>" href="javascript:void(0)" data-index="<?= $i ?>"><?php echo $i; ?></a></li>
+                    <li><a class="phantrang" id="<?= $i ?>" href="javascript:void(0)" data-index="<?= $i ?>"><?php echo $i; ?></a></li>
                 <?php }
             }
 
