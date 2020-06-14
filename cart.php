@@ -57,12 +57,12 @@ $ok_user = 0;
 	include('modules/content/title.php'); //tieu de & hinh nen tieu de
 	if (isset($_SESSION['username'])) {
 		$USERNAME = $_SESSION['username'];
-		$account = DataProvider::executeQuery("SELECT * FROM taikhoan WHERE USERNAME = '$USERNAME' LIMIT 1");
-		$re = mysqli_fetch_assoc($account);
-		if($re['LEVEL'] != '0') {
-			$ok_user = 1;
+		$account = DataProvider::executeQuery("SELECT * FROM taikhoan WHERE USERNAME = '$USERNAME'");
+		$re = mysqli_fetch_array($account);
+		if($re['LEVEL'] == 1) {
+			$ok_user = 2;
 		} else {
-		$ok_user = 2;
+		$ok_user = 1;
 		}
 	}
 	?>
@@ -155,41 +155,6 @@ $ok_user = 0;
 							</table>
 						</div>
 						<div class="row justify-content-end">
-							<!-- Phần khuyến mại + thanh toán: thương mại điện tử làm -->
-							<!-- <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-					<div class="cart-total mb-3">
-						<h3>Coupon Code</h3>
-						<p>Enter your coupon code if you have one</p>
-						<form action="#" class="info">
-							<div class="form-group">
-								<label for="">Coupon code</label>
-								<input type="text" class="form-control text-left px-3" placeholder="">
-							</div>
-						</form>
-					</div>
-					<p><a href="checkout.php" class="btn btn-primary py-3 px-4">Apply Coupon</a></p>
-				</div>
-				<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-					<div class="cart-total mb-3">
-						<h3>Estimate shipping and tax</h3>
-						<p>Enter your destination to get a shipping estimate</p>
-						<form action="#" class="info">
-							<div class="form-group">
-								<label for="">Country</label>
-								<input type="text" class="form-control text-left px-3" placeholder="">
-							</div>
-							<div class="form-group">
-								<label for="country">State/Province</label>
-								<input type="text" class="form-control text-left px-3" placeholder="">
-							</div>
-							<div class="form-group">
-								<label for="country">Zip/Postal Code</label>
-								<input type="text" class="form-control text-left px-3" placeholder="">
-							</div>
-						</form>
-					</div>
-					<p><a href="checkout.php" class="btn btn-primary py-3 px-4">Estimate</a></p>
-				</div> -->
 							<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
 								<div class="cart-total mb-3">
 									<h3>Thanh toán</h3>

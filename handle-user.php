@@ -9,7 +9,7 @@ if (isset($_POST['user-action'])) {
         if (isset($_POST['txtUsername']) && isset($_POST['txtPassword'])) {
             //die('');
             $username   = addslashes($_POST['txtUsername']);
-            $password   = md5($_POST['txtPassword']);
+            $password   = addslashes($_POST['txtPassword']);
             $sql = "SELECT * FROM taikhoan WHERE USERNAME='$username' AND PASSWORD='$password' LIMIT 1";
             $result = DataProvider::executeQuery($sql);
             $row = mysqli_fetch_assoc($result);

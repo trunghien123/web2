@@ -129,7 +129,7 @@ if ($result != null) {
                 if ($i == $current_page) { ?>
                     <li class="active"><span><?php echo $i; ?></span></li>
                 <?php } else { ?>
-                    <li><a  class="phantrang" id="<?= $i ?>" href="javascript:void(0)" data-index="<?= $i ?>"><?php echo $i; ?></a></li>
+                    <li><a href="shop.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
                 <?php }
             }
 

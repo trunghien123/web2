@@ -35,11 +35,7 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block " >
-                                <a href="index.php">
-                                    <img src="admin/congcu/img/bg_login.jpg" width="475" height="453" >
-                                </a>
-                            </div>
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image" style="background-image: url(admin/congcu/img/bg_login.jpg)"></div>
                             <div class="col-lg-6 ">
                                 <div class="p-5 ">
                                     <div class="text-center ">
@@ -126,7 +122,7 @@
                         $('#alertModal').modal('show');
                     } else {
                         $('#alertModal .modal-body p').html("Đăng nhập thành công");
-                        ok = Number(r['LEVEL'] )+ 1;
+                        ok = r['LEVEL'];
                         $('#alertModal').modal('show');
                     }
                 }
@@ -134,16 +130,16 @@
             e.preventDefault();
         });
         $('#alertModal').on('hidden.bs.modal', function(e) {
-            if (ok == 1) {
+            if (ok === 1) {
                 location.href = 'index.php';
             }
-            if (ok == 2) {
+            if (ok === 2) {
                 location.href = 'staff/index.php';
             }
-            if (ok == 3) {
+            if (ok === 3) {
                 location.href = 'manager/index.php';
             }
-            if (ok == 4) {
+            if (ok === 4) {
                 location.href = 'admin/index.php';
             }
         });

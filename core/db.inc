@@ -1,6 +1,6 @@
 <?php
 	$hostName = "localhost";
-   	$databaseName = "pizzacompany";
+   	$databaseName = "pizzacompany2";
    	$username = "root";
    	$password = "";
 ?>
